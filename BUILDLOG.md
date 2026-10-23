@@ -31,3 +31,15 @@ AI assistant used: Claude. Entries are written per stage.
 
 **What I need to verify later**
 - (How CORS preflight works or why the geo fallback must be tested with mocks)
+
+## Stage 1: Skeleton
+
+**Where AI helped**
+- Drafted the folder layout (routes/services/repositories), config loader, health route, Dockerfile and compose.yaml.
+- Explained why the DB address differs between my machine (`localhost:5433`) and inside Docker (`db:5432`).
+
+**What I changed / questioned**
+- (one real thing, e.g. asked why the healthcheck replaces `restart: on-failure`)
+
+**What I need to verify later**
+- (How the API will connect to Postgres in Stage 2)
