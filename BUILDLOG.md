@@ -43,3 +43,15 @@ AI assistant used: Claude. Entries are written per stage.
 
 **What I need to verify later**
 - (How the API will connect to Postgres in Stage 2)
+
+## Stage 2: Migrations
+
+**Where AI helped**
+- Drafted the Alembic setup, the `env.py` edit, and the migration SQL for `widgets`, `submissions` and four indexes.
+- Explained why migrations beat `CREATE TABLE IF NOT EXISTS` (they can change an existing table later).
+
+**What I changed / questioned**
+- (one real thing, e.g. why `env.py` reads `.env` instead of `alembic.ini`)
+
+**What I need to verify later**
+- Whether the unique idempotency index behaves correctly with NULL keys (Stage 8).
