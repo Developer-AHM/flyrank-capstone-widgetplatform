@@ -10,4 +10,6 @@ def require(name):
     return value
 
 DATABASE_URL = require("DATABASE_URL")
+SUPABASE_URL = require("SUPABASE_URL")
+SUPABASE_KEY = require("SUPABASE_KEY")
 PORT = int(os.getenv("PORT", "8000"))
