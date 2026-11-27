@@ -18,3 +18,17 @@ B can get it: False
 A list size: 1 / B list size: 0
 B can delete it: False
 owner_id in body rejected: ValidationError
+
+## Requirement: Multi-tenant isolation + authenticated widget CRUD
+
+Command: `bash scripts/isolation_test.sh`
+Output:
+token lengths A/B: 944 947
+1 no token (401): 401
+2 owner reads (200): 200
+3 other tenant reads (404): 404
+4 B lists (200): 200   body: []
+5 B updates A's (404): 404
+6 B deletes A's (404): 404
+7 smuggled owner_id (422): 422
+8 A deletes own (204): 204

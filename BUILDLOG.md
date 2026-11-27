@@ -55,3 +55,16 @@ AI assistant used: Claude. Entries are written per stage.
 
 **What I need to verify later**
 - Whether the unique idempotency index behaves correctly with NULL keys (Stage 8).
+
+## Stage 3: Auth and widget CRUD
+
+**Where AI helped**
+- Drafted the auth guard, widget schemas, repository, service, routes and the isolation script.
+
+**What went wrong / what I learned**
+- A stale server gave 404 on /me until it reloaded.
+- Long commands pasted into the terminal got garbled and produced misleading 401s, so I moved the test into a script.
+- owner_id must come only from the token; extra="forbid" rejects it in the body.
+
+**To verify later**
+- Why it gave 404 rather than 403 for another tenant's widget.
