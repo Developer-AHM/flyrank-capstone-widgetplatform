@@ -68,3 +68,17 @@ AI assistant used: Claude. Entries are written per stage.
 
 **To verify later**
 - Why it gave 404 rather than 403 for another tenant's widget.
+
+## Stage 4: Embed snippet and cached delivery
+
+**Where AI helped**
+- Drafted the snippet route, public config with ETag/304, versioned bundle and widget.v1.js.
+
+**What went wrong / what I learned**
+- Test script failed with `python: command not found` because the venv was not active in that tab.
+- Pasting commands into a tab without `.env` loaded gave empty Supabase URL.
+- Two checks failed intermittently (snippet 401, PUT not applied), then passed on three reruns. Added logging to verify_token to see the real cause if it recurs.
+- Known limitation: a Supabase outage and a bad token both return 401; 503 would be more accurate.
+
+**To verify later**
+- Why the bundle is immutable and must never be edited after release.

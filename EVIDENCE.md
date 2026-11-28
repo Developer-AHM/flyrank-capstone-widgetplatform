@@ -32,3 +32,16 @@ token lengths A/B: 944 947
 6 B deletes A's (404): 404
 7 smuggled owner_id (422): 422
 8 A deletes own (204): 204
+
+## Requirement: Fast, cached widget delivery
+
+Command: `bash scripts/delivery_test.sh` (3 consecutive runs, all passing)
+Output (one run):
+config headers: 200, cache-control: public, max-age=60, etag: "w_..-v1", access-control-allow-origin: *
+config body: no owner_id
+same ETag -> 304
+after PUT edit, old ETag -> 200
+unknown widget -> 404
+bundle: 200, application/javascript, cache-control: public, max-age=31536000, immutable
+snippet (owner): <script src="http://localhost:8000/widget.v1.js?id=w_..."></script>
+snippet without token -> 401

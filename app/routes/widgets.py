@@ -42,3 +42,10 @@ def delete_widget(widget_id: str, user=Depends(current_user)):
     if not service.delete_widget(user.id, widget_id):
         raise not_found()
     return Response(status_code=204)
+
+@router.get("/{widget_id}/snippet", summary="Get the embed snippet")
+def get_snippet(widget_id: str, user=Depends(current_user)):
+    widget = service.get_widget(user.id, widget_id)
+    if widget is None:
+        raise not_found()
+    return {"snippet": service.build_snippet(widget["id"])}

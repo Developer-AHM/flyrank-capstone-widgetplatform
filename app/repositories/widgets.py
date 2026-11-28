@@ -73,3 +73,13 @@ def delete_for_owner(widget_id, owner_id):
             (widget_id, owner_id),
         )
         return cur.rowcount > 0
+
+PUBLIC_COLUMNS = "id, type, title, description, fields, button_text, display_options, version"
+
+
+def get_public(widget_id):
+    with db.connect() as conn:
+        return conn.execute(
+            f"SELECT {PUBLIC_COLUMNS} FROM widgets WHERE id = %s",
+            (widget_id,),
+        ).fetchone()
